@@ -1,9 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Sum List</title>
-  </head>
-  <body>
-    <h1>List Calculation</h1>
-  </body>
+
+<head>
+  <title>Sum List</title>
+</head>
+
+<body>
+  <h1>List Calculation</h1>
+  <textarea id="number-input" cols="80" rows="10"></textarea>
+  <button id="button-calculate">Calculate</button>
+  <div id="result">
+    <ul>
+      <li>Sum = <span id="result-sum"></span></li>
+      <li>Average = <span id="result-average"></span></li>
+      <li>Deviation = <span id="result-deviation"></span></li>
+    </ul>
+  </div>
+  <script>
+    var numberInput = document.getElementById("number-input");
+    var buttonCalculate = document.getElementById("button-calculate");
+    var resultSum = document.getElementById("result-sum");
+    var resultAverage = document.getElementById("result-average");
+    var resultDeviation = document.getElementById("result-deviation")
+    function clickHandler() {
+      let numList = numberInput.value.split(/[\s,]+/).map(v => Number(v));
+      let sum = 0;
+      let sum2 = 0;
+      for(let a of numList) {
+        sum += a
+        sum2 += a*a;
+      }
+      let average = 1.0 * sum / numList.length;
+      let deviation = Math.sqrt(sum2/numList.length - average*average);
+      resultSum.innerText = sum;
+      resultAverage.innerText = average;
+      resultDeviation.innerText = deviation;
+    }
+    function calculate() {
+      buttonCalculate.addEventListener("click", clickHandler);
+    }
+    calculate()
+  </script>
+</body>
+
 </html>
