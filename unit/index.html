@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>inch</title>
+  </head>
+  
+  <body>
+    <h1>inch to cm</h1>
+
+    <form>
+      <input type="number" id="number-input">
+    </form>
+    
+    <ul>
+       <li>cm = <span id="result-cm"></span></li>
+    </ul>
+
+    <script>
+      var input = document.getElementById("number-input");
+      var result = document.getElementById("result-cm");
+
+      function execution() {
+        let num = input.value;
+        let value = num*2.54;
+        result.innerText = value;
+      }
+
+      var event = input.addEventListener('input', execution);
+    </script>
+  </body>
+</html>
+
